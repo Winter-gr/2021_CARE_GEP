@@ -60,7 +60,7 @@ class Directory_popup(object):
         if _count == 2: # 3-1 3-2 3-3... 으로 폴더가 바로 나타나는 경우(2019)
             _dir_1 = os.listdir(self._in_dir)
             _folder_list = sorted(_dir_1)
-            print('1:' ,_folder_list)
+            #print('1:' ,_folder_list)
             
             for fold in _folder_list:
                 _dir_2 = sorted(os.listdir(os.path.join(self._in_dir, fold)))
@@ -68,7 +68,7 @@ class Directory_popup(object):
                 
                 for _each in _dir_2:
                     self._target_list.append(os.path.join(self._in_dir, fold, _each))
-                    print('f:', self._target_list)
+                    #print('f:', self._target_list)
                     time.sleep(0.1)
             
         elif _count == 4:
@@ -93,7 +93,7 @@ class Directory_popup(object):
                             # print('4: ', _dir_4)
                             
                             _for4_count_max = len(_dir_4)
-                            print('len dir4: ', _for4_count_max, 'in :', _dir_3)
+                            # print('len dir4: ', _for4_count_max, 'in :', _dir_3)
                             
                             _for4_count = 0
                             _count_json = 0
@@ -106,7 +106,7 @@ class Directory_popup(object):
                                     if _each.find('jpg') == -1:
                                         _count_json = _count_json + 1
                                         self._target_list.append(os.path.join(self._in_dir, _target_1, M_folder, FLR_folder, _each))
-                                        print('no jpg and json!', _each)
+                                        # print('no jpg and json!', _each)
                                 else:
                                     self._target_list.append(os.path.join(self._in_dir, _target_1, M_folder, FLR_folder, _each))
                                 
@@ -115,12 +115,12 @@ class Directory_popup(object):
                                     
                                     for _each in _dir_4:
                                         self._target_list.append(os.path.join(self._in_dir, _target_1, M_folder, FLR_folder, _each))
-                                        print('only jpgjson!', _each)
+                                        # print('only jpgjson!', _each)
                                 
                                 
                                 
-        print(self._target_list[4810])
-        print(_count)  
+        # print(self._target_list[4810])
+        # print(_count)  
         
         self._target_list.reverse()
         
