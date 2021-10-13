@@ -38,7 +38,7 @@ import time
 
 class Directory_popup(object):
     def __init__(self, in_dir, ex_dir, target_format):
-        
+        print('Directory_popup Class init')        
         self._in_dir = in_dir
         self._ex_dir = ex_dir
         self._target_format = target_format
@@ -122,6 +122,7 @@ class Directory_popup(object):
         # print(self._target_list[4810])
         # print(_count)  
         
+        self._target_len = len(self._target_list)
         self._target_list.reverse()
         
         
@@ -130,3 +131,6 @@ class Directory_popup(object):
         new_dir = self._target_list.pop()
         
         return new_dir
+
+    def Dir_Length(self):
+        return self._target_len
