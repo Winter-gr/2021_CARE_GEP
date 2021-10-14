@@ -16,7 +16,7 @@
     삭제 하는 방법 : `git branch -d (삭제할 브랜치 이름)`  
     브랜치 확인하는 방법 : `git branch -a`
 * 새로운 브랜치에 업데이트 할 내용을 add, commit 한다.  
-`git chech checkout (옮겨갈 브랜치 이름)`
+`git checkout (옮겨갈 브랜치 이름)`
     `git add (업데이트 할 파일)`
     `git commit -m "(커밋 내용)"`
 * push 하고 githib 원격저장소에서 PR을 남긴다.  
