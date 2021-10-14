@@ -1,7 +1,7 @@
 '''
     인풋:
         1. 상위 디렉토리
-        2. 파일까지의 직접적인 디렉토리(코드가 접근해야하는. 예시로 입력)
+        2. 파일직전 상위까지의 직접적인 디렉토리(코드가 접근해야하는. 예시로 입력)
         3. 파일 확장자(모듈 실행시 구분을 위함)
         
     아웃풋:
@@ -12,22 +12,22 @@
 '''
 
 '../../AI_hub_second/video_action_3'
-'../../AI_hub_second/video_action_3/3-1/3-1_001-C01.mp4'
+'../../AI_hub_second/video_action_3/3-1'
 OR
 '../../AI_hub_second/2020-jpg'
-'../../AI_hub_second/2020-jpg/Training/0011_M217M218/0011_M217M218_F_A_10162_10642/0011_M217M218_F_A_10162_10642_0000000.jpg'
+'../../AI_hub_second/2020-jpg/Training/0011_M217M218/0011_M217M218_F_A_10162_10642'
 
 OR
 '../../AI_hub_second/2020'
-'../../AI_hub_second/2020/Training/0011_M217M218/0011_M217M218_F_A_10162_10642/0011_M217M218_F_A_10162_10642_0000000.json'
+'../../AI_hub_second/2020/Training/0011_M217M218/0011_M217M218_F_A_10162_10642'
 
 OR
 '../../AI_hub_second/2020/Annotation_2D_tar/2D-1'
-'../../AI_hub_second/2020/Annotation_2D_tar/2D-1/2-1/2-1_001-C01_2D.json'
+'../../AI_hub_second/2020/Annotation_2D_tar/2D-1/2-1'
 
 OR
 '../../AI_hub_second/video_action_3/'
-'../../AI_hub_second/video_action_3/3-1/3-1_001-C01.mp4'
+'../../AI_hub_second/video_action_3/3-1'
 
 '''
 
@@ -54,24 +54,27 @@ class Directory_popup(object):
         _diff_dir = self._ex_dir[_len_dir:]
         
         _count = _diff_dir.count('/')
-        # 2019 data ver -> _count = 2
-        # 2020 data ver -> _count = 4
-        
-        if _count == 2: # 3-1 3-2 3-3... 으로 폴더가 바로 나타나는 경우(2019)
+        # 2019 data ver -> _count = 1
+        # 2020 data ver -> _count = 3
+        if _count == 1: # 3-1 3-2 3-3... 으로 폴더가 바로 나타나는 경우(2019)
             _dir_1 = os.listdir(self._in_dir)
             _folder_list = sorted(_dir_1)
             #print('1:' ,_folder_list)
             
             for fold in _folder_list:
-                _dir_2 = sorted(os.listdir(os.path.join(self._in_dir, fold)))
+                if fold.startswith('.') == False:
+                    _dir_2 = sorted(os.listdir(os.path.join(self._in_dir, fold)))
                 #print('2: ', _dir_2)
                 
-                for _each in _dir_2:
-                    self._target_list.append(os.path.join(self._in_dir, fold, _each))
+                    for _each in _dir_2:
+                        if _each.startswith('.') == False:
+                            self._target_list.append(os.path.join(self._in_dir, fold, _each))
                     #print('f:', self._target_list)
-                    time.sleep(0.1)
-            
-        elif _count == 4:
+                    #time.sleep(3)
+        
+
+        # 2020 data ver
+        elif _count == 3:
             _dir_1 = os.listdir(self._in_dir)
             
             for i in _dir_1: # Training or Validation
@@ -120,9 +123,8 @@ class Directory_popup(object):
                                 
                                 
         # print(self._target_list[4810])
-        # print(_count)  
+        #print('count:',_count)  
         
-        self._target_len = len(self._target_list)
         self._target_list.reverse()
         
         
@@ -133,4 +135,6 @@ class Directory_popup(object):
         return new_dir
 
     def Dir_Length(self):
+        self._target_len = len(self._target_list)
+        print('len test:', self._target_len)
         return self._target_len
