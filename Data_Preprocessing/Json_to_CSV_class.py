@@ -23,11 +23,52 @@ import Json_to_CSV_2020_func as to_csv_2020
 
 '''
 
+""" 동작 예시 - # 모든 dataset들은 AI~ 로 시작하는 폴더 안에서 정렬되어 있다고 가정(..../AI~~~/2020data 또는 ..../AI~~~~/2019data 이런식
+    
+    ### 2019
+    
+    fold_dir = '../../AI_hub_second/Annotation_2D_tar/2D-1'
+    file_dir = '../../AI_hub_second/Annotation_2D_tar/2D-1/2-1'
+    csv_dir = '../../AI_hub_second/Json_to_csv_module_TEST/'
+    file_format = '.json'
+    data_year = 2019
+
+    json_to_csv = Json_to_CSV(fold_dir = fold_dir, file_dir = file_dir, csv_dir = csv_dir, 
+                              file_format = file_format, year=data_year)
+    json_to_csv.Start_Conversion()
+
+
+    ### 2020 - Validation
+
+    fold_dir_v = "../../AI_hub_second/2020/Validation/"
+    file_dir = None
+    csv_dir_v = "../../AI_hub_second/Json_to_csv_module_TEST/2020/Validation"
+    file_format = '.json'
+    data_year = 2020
+
+    json_to_csv = Json_to_CSV(fold_dir = fold_dir_v, file_dir = file_dir, csv_dir = csv_dir_v, 
+                              file_format = file_format, year=data_year)
+    json_to_csv.Start_Conversion()
+
+    ### 2020 - Training
+
+    fold_dir_v = "../../AI_hub_second/2020/Training/"
+    file_dir = None
+    csv_dir_v = "../../AI_hub_second/Json_to_csv_module_TEST/2020/Training"
+    file_format = '.json'
+    data_year = 2020
+
+    json_to_csv = Json_to_CSV(fold_dir = fold_dir_v, file_dir = file_dir, csv_dir = csv_dir_v, 
+                              file_format = file_format, year=data_year)
+    json_to_csv.Start_Conversion()
+
+"""
+
 class InValidException(Exception):
     def __init__(self):
         super(InValidException, self).__init__("Class Initialize Failed")
 
-
+##########################################################################
 class Json_to_CSV(object):
     ''' PARENT CLASS '''
     def __init__(self, fold_dir, file_dir, csv_dir, file_format, year):
@@ -105,7 +146,7 @@ class Json_to_CSV(object):
             _csv_keypoint = open_csv_dir[:-5] + "_key.csv"
             _csv_bbox = open_csv_dir[:-5] + "_bbox.csv"
             
-            csv_out_key = open(_csv_keypoint, 'w', newline='')
+            csv_out_key = open(_csv_keypoint, 'a', newline='')
             csv_out_writer_key = csv.writer(csv_out_key, delimiter = ',', quoting=csv.QUOTE_MINIMAL)
             csv_out_bbox = open(_csv_bbox, 'a', newline='')
             csv_out_writer_bbox = csv.writer(csv_out_bbox, delimiter = ',', quoting=csv.QUOTE_MINIMAL)
@@ -164,47 +205,3 @@ class Json_to_CSV(object):
         _json_dir = self._fold_dir
         _csv_dir = self._csv_dir
         to_csv_2020.Json_to_CSV_2020_func(json_folder_dir = _json_dir, csv_out_dir = _csv_dir)
-
-
-
-
-""" 동작 예시 - # 모든 dataset들은 AI~ 로 시작하는 폴더 안에서 정렬되어 있다고 가정(..../AI~~~/2020data 또는 ..../AI~~~~/2019data 이런식
-    
-    ### 2019
-    
-    fold_dir = '../../AI_hub_second/Annotation_2D_tar/2D-1'
-    file_dir = '../../AI_hub_second/Annotation_2D_tar/2D-1/2-1'
-    csv_dir = '../../AI_hub_second/Json_to_csv_module_TEST/'
-    file_format = '.json'
-    data_year = 2019
-
-    json_to_csv = Json_to_CSV(fold_dir = fold_dir, file_dir = file_dir, csv_dir = csv_dir, 
-                              file_format = file_format, year=data_year)
-    json_to_csv.Start_Conversion()
-
-
-    ### 2020 - Validation
-
-    fold_dir_v = "../../AI_hub_second/2020/Validation/"
-    file_dir = None
-    csv_dir_v = "../../AI_hub_second/Json_to_csv_module_TEST/2020/Validation"
-    file_format = '.json'
-    data_year = 2020
-
-    json_to_csv = Json_to_CSV(fold_dir = fold_dir_v, file_dir = file_dir, csv_dir = csv_dir_v, 
-                              file_format = file_format, year=data_year)
-    json_to_csv.Start_Conversion()
-
-    ### 2020 - Training
-
-    fold_dir_v = "../../AI_hub_second/2020/Training/"
-    file_dir = None
-    csv_dir_v = "../../AI_hub_second/Json_to_csv_module_TEST/2020/Training"
-    file_format = '.json'
-    data_year = 2020
-
-    json_to_csv = Json_to_CSV(fold_dir = fold_dir_v, file_dir = file_dir, csv_dir = csv_dir_v, 
-                              file_format = file_format, year=data_year)
-    json_to_csv.Start_Conversion()
-
-"""
