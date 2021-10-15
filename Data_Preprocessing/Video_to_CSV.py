@@ -82,7 +82,7 @@ class ConvertToCSV(object):
 
             
 
-    def extract_skeleton(self, file_dir):
+    def Extract_Skeleton(self, file_dir):
         self._file_dir = file_dir
         
         if self._video_format == 'jpg':
@@ -355,7 +355,7 @@ class ConvertToCSV(object):
         cv2.destroyAllWindows() 
         return self._exit_flag
         
-    def reverse_extract_skeleton(self, path):
+    def Reverse_Extract_Skeleton(self, path):
         '''
             return:
                 reveresed frames of video of path in arg

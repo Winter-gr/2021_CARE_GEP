@@ -19,7 +19,7 @@ for _iter in range(_Dir_len):
     
     # Extract skeleton
     Video_to_csv_TEST = video.ConvertToCSV(csv_out_dir, 'mp4', verbose = False)
-    exit_value = Video_to_csv_TEST.extract_skeleton(mp4_dir)
+    exit_value = Video_to_csv_TEST.Extract_Skeleton(mp4_dir)
     print(exit_value)
     if exit_value == -1:
         break
