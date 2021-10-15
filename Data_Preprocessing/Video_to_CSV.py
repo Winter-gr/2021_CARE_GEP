@@ -133,7 +133,7 @@ class ConvertToCSV(object):
 
         # Join the path: for csv files
         csv_out_dir = open_csv_dir[:-4] + ".csv"
-        csv_out = open(csv_out_dir, 'a', newline='')
+        csv_out = open(csv_out_dir, 'w', newline='')
         csv_out_writer = csv.writer(csv_out, delimiter = ',', quoting=csv.QUOTE_MINIMAL)
 
         
