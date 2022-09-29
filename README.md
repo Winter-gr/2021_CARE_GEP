@@ -1,2 +1,2 @@
-# 2021_CARE_GEP
-한양대학교ERICA 교내대회 GEP에 참가하는 stayc 팀 레포지토리 입니다.
+2022 임베디드소프트웨어경진대회 참여 Repository
+
